@@ -316,9 +316,9 @@ require (
 	go.opencensus.io v0.23.0 // indirect
 	golang.org/x/crypto v0.0.0-20211215153901-e495a2d5b3d3 // indirect
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616 // indirect
-	golang.org/x/net v0.0.0-20220524220425-1d687d428aca // indirect
+	golang.org/x/net v0.0.0-20220526153639-5463443f8c37 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
-	golang.org/x/sys v0.0.0-20220315194320-039c03cc5b86 // indirect
+	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba // indirect
 	golang.org/x/tools v0.1.8 // indirect
@@ -353,7 +353,7 @@ require (
 
 require (
 	cloud.google.com/go/compute v1.3.0 // indirect
-	github.com/authlete/openapi-for-go v0.2.0 // indirect
+	github.com/authlete/openapi-for-go v0.4.0 // indirect
 	github.com/clbanning/mxj v1.8.4 // indirect
 	github.com/golang-jwt/jwt/v4 v4.3.0 // indirect
 )

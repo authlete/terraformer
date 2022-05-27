@@ -33,7 +33,7 @@ func newCmdAuthleteImporter(options ImportOptions) *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			apiServer := os.Getenv("AUTHLETE_API_SERVER")
 			if len(apiServer) == 0 {
-				apiServer = "https://api.authlete.com/api"
+				apiServer = "https://api.authlete.com"
 			}
 			soKey := os.Getenv("AUTHLETE_SO_KEY")
 			soSecret := os.Getenv("AUTHLETE_SO_SECRET")

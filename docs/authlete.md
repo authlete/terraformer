@@ -34,7 +34,7 @@ $ terraformer import authlete --resources=authlete_service,authlete_client
 
 
 ```
-$ export AUTHLETE_API_SERVER=https://<api-server>/api
+$ export AUTHLETE_API_SERVER=https://<api-server-fqdn>
 $ export AUTHLETE_SO_KEY=<SERVICE_OWNER_KEY>
 $ export AUTHLETE_SO_SECRET=<SERVICE_OWNER_SECRET>
 $ export AUTHLETE_API_KEY=<API_KEY>
