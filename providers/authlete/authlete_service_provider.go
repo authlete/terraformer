@@ -16,18 +16,18 @@ type AuthleteProvider struct { // nolint
 	apiSecret string
 }
 
-func (this *AuthleteProvider) GetResourceConnections() map[string]map[string][]string {
+func (p *AuthleteProvider) GetResourceConnections() map[string]map[string][]string {
 	return map[string]map[string][]string{}
 }
 
-func (this *AuthleteProvider) GetProviderData(arg ...string) map[string]interface{} {
+func (p *AuthleteProvider) GetProviderData(arg ...string) map[string]interface{} {
 	authleteConfig := map[string]interface{}{}
 
-	authleteConfig["api_server"] = this.apiServer
-	authleteConfig["service_owner_key"] = this.soKey
-	authleteConfig["service_owner_secret"] = this.soSecret
-	authleteConfig["api_key"] = this.apiKey
-	authleteConfig["api_secret"] = this.apiSecret
+	authleteConfig["api_server"] = p.apiServer
+	authleteConfig["service_owner_key"] = p.soKey
+	authleteConfig["service_owner_secret"] = p.soSecret
+	authleteConfig["api_key"] = p.apiKey
+	authleteConfig["api_secret"] = p.apiSecret
 
 	return map[string]interface{}{
 		"provider": map[string]interface{}{
@@ -36,49 +36,49 @@ func (this *AuthleteProvider) GetProviderData(arg ...string) map[string]interfac
 	}
 }
 
-func (this *AuthleteProvider) Init(args []string) error {
-	this.apiServer = args[0]
-	this.soKey = args[1]
-	this.soSecret = args[2]
-	this.apiKey = args[3]
-	this.apiSecret = args[4]
+func (p *AuthleteProvider) Init(args []string) error {
+	p.apiServer = args[0]
+	p.soKey = args[1]
+	p.soSecret = args[2]
+	p.apiKey = args[3]
+	p.apiSecret = args[4]
 	return nil
 }
 
-func (this *AuthleteProvider) GetName() string {
+func (p *AuthleteProvider) GetName() string {
 	return "authlete"
 }
 
-func (this *AuthleteProvider) GetConfig() cty.Value {
+func (p *AuthleteProvider) GetConfig() cty.Value {
 	return cty.ObjectVal(map[string]cty.Value{
-		"api_server":           cty.StringVal(this.apiServer),
-		"service_owner_key":    cty.StringVal(this.soKey),
-		"service_owner_secret": cty.StringVal(this.soSecret),
-		"api_key":              cty.StringVal(this.apiKey),
-		"api_secret":           cty.StringVal(this.apiSecret),
+		"api_server":           cty.StringVal(p.apiServer),
+		"service_owner_key":    cty.StringVal(p.soKey),
+		"service_owner_secret": cty.StringVal(p.soSecret),
+		"api_key":              cty.StringVal(p.apiKey),
+		"api_secret":           cty.StringVal(p.apiSecret),
 	})
 }
 
-func (this *AuthleteProvider) InitService(serviceName string, verbose bool) error {
+func (p *AuthleteProvider) InitService(serviceName string, verbose bool) error {
 	var isSupported bool
-	if _, isSupported = this.GetSupportedService()[serviceName]; !isSupported {
-		return errors.New(this.GetName() + ": " + serviceName + " not supported service")
+	if _, isSupported = p.GetSupportedService()[serviceName]; !isSupported {
+		return errors.New(p.GetName() + ": " + serviceName + " not supported service")
 	}
-	this.Service = this.GetSupportedService()[serviceName]
-	this.Service.SetName(serviceName)
-	this.Service.SetVerbose(verbose)
-	this.Service.SetProviderName(this.GetName())
-	this.Service.SetArgs(map[string]interface{}{
-		"api_server":           this.apiServer,
-		"service_owner_key":    this.soKey,
-		"service_owner_secret": this.soSecret,
-		"api_key":              this.apiKey,
-		"api_secret":           this.apiSecret,
+	p.Service = p.GetSupportedService()[serviceName]
+	p.Service.SetName(serviceName)
+	p.Service.SetVerbose(verbose)
+	p.Service.SetProviderName(p.GetName())
+	p.Service.SetArgs(map[string]interface{}{
+		"api_server":           p.apiServer,
+		"service_owner_key":    p.soKey,
+		"service_owner_secret": p.soSecret,
+		"api_key":              p.apiKey,
+		"api_secret":           p.apiSecret,
 	})
 	return nil
 }
 
-func (this *AuthleteProvider) GetSupportedService() map[string]terraformutils.ServiceGenerator {
+func (p *AuthleteProvider) GetSupportedService() map[string]terraformutils.ServiceGenerator {
 	return map[string]terraformutils.ServiceGenerator{
 		"authlete_service": &ServiceGenerator{},
 		"authlete_client":  &ClientGenerator{},
