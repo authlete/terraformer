@@ -17,7 +17,12 @@ type AuthleteProvider struct { // nolint
 }
 
 func (p *AuthleteProvider) GetResourceConnections() map[string]map[string][]string {
-	return map[string]map[string][]string{}
+	toReturn := make(map[string]map[string][]string)
+	serviceMap := make(map[string][]string)
+	serviceMap["authlete_service"] = []string{"id", "api_secret"}
+	serviceMap["authlete_client"] = []string{"id", "client_secret"}
+	toReturn["service"] = serviceMap
+	return toReturn
 }
 
 func (p *AuthleteProvider) GetProviderData(arg ...string) map[string]interface{} {
