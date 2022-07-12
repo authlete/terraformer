@@ -347,7 +347,7 @@ require (
 	cloud.google.com/go/cloudtasks v1.3.0
 	cloud.google.com/go/iam v0.3.0
 	cloud.google.com/go/monitoring v1.4.0
-	github.com/authlete/openapi-for-go v0.4.0
+	github.com/authlete/openapi-for-go v1.0.0
 	github.com/manicminer/hamilton v0.44.0
 )
 
